@@ -2,9 +2,11 @@
 
 Date de rendue : 
 
-* Site réservation restaurant : Chez tonton Sergio🤌🏻  
+** Site réservation restaurant : Chez tonton Sergio🤌🏻 **
+
 * questionnaire de réservation
 * choix du menu voulu (renvoie des données pour faire une liste de course "option")
 * planning des réservation
 * petite base de données pour savoir qui réserve et a quelle fréquence
 * zone d'autentification
+
