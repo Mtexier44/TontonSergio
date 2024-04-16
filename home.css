@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-
 }
 
 header {
@@ -11,12 +10,17 @@ header {
     justify-content: space-between;
 }
 
-.logo img {
-    width: 200px; 
+.left-elements, .right-elements {
+    display: flex;
+    align-items: center;
 }
 
-h1 {
-    margin: 0;
+.left-elements img {
+    width: 200px;
+}
+
+.left-elements h1 {
+    margin-left: 350px;
     color: #d81d09; 
 }
 
