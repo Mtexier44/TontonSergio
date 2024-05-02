@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier de Réservation</title>
-    <link rel="stylesheet" href="reservation.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendrier</title>
+  <link rel="stylesheet" href="reservation.css">
 </head>
 <body>
-    <div class="calendar">
-        <div class="month-header"></div>
-        <div class="weekdays"></div>
-        <div class="days"></div>
+  <div class="calendar">
+    <div class="month-container">
+      <div class="prev-month">&lt;</div>
+      <div class="month-space"></div> <!-- Espace ajouté -->
+      <div class="current-month"></div>
+      <div class="month-space"></div> 
+      <div class="next-month">&gt;</div>
     </div>
-
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="close" id="close-popup">&times;</span>
-            <h2 id="popup-date"></h2>
-            <div id="time-options"></div>
-            <button id="close-popup-btn" class="time-option">Fermer</button>
-        </div>
-    </div>
-
-    <script src="reservation.js"></script>
+    <div class="month"></div>
+  </div>
+  <script src="reservation.js"></script>
 </body>
 </html>

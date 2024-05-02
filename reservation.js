@@ -1,123 +1,129 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const monthHeader = document.querySelector(".month-header");
-    const weekdaysContainer = document.querySelector(".weekdays");
-    const daysContainer = document.querySelector(".days");
-    const popup = document.getElementById("popup");
-    const closePopupBtn = document.getElementById("close-popup");
-    const closePopupButton = document.getElementById("close-popup-btn");
-    const popupDate = document.getElementById("popup-date");
-    const timeOptions = document.getElementById("time-options");
-
-    const currentDate = new Date();
-    let currentMonth = currentDate.getMonth();
-    let currentYear = currentDate.getFullYear();
-
-    // Create an array of month names
-    const monthNames = [
+document.addEventListener('DOMContentLoaded', function () {
+    const months = [
         "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
         "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ];
 
-    // Set month header
-    monthHeader.textContent = monthNames[currentMonth] + " " + currentYear;
+    const daysOfWeek = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 
-    // Set weekdays
-    const weekdays = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
-    weekdays.forEach(function(day) {
-        const weekdayElement = document.createElement("div");
-        weekdayElement.textContent = day;
-        weekdayElement.classList.add("day");
-        weekdaysContainer.appendChild(weekdayElement);
-    });
+    const calendarDiv = document.querySelector('.calendar');
+    const monthDiv = document.querySelector('.month');
+    const prevMonthBtn = document.querySelector('.prev-month');
+    const nextMonthBtn = document.querySelector('.next-month');
+    const currentMonthDiv = document.querySelector('.current-month');
 
-    // Function to show the popup with available and booked times
-    function showPopup(date) {
-        popupDate.textContent = date;
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
+    document.body.appendChild(popup);
 
-        // Clear previous time options
-        timeOptions.innerHTML = "";
+    let currentMonth = new Date().getMonth();
 
-        // Add time options
-        const timeSlots = {
-            "Midi": ["11h30", "12h", "12h30", "13h", "13h30"],
-            "Soir": ["19h", "19h30", "20h", "20h30", "21h", "21h30"]
-        };
+    function updateCalendar(monthIndex) {
+        monthDiv.innerHTML = '';
 
-        for (const period in timeSlots) {
-            const periodHeader = document.createElement("h3");
-            periodHeader.textContent = period;
-            timeOptions.appendChild(periodHeader);
+        const daysDiv = document.createElement('div');
+        daysDiv.classList.add('days');
 
-            timeSlots[period].forEach(function(time) {
-                const timeButton = document.createElement("button");
-                timeButton.textContent = time;
-                timeButton.classList.add("time-option");
-                timeButton.addEventListener("click", function() {
-                    const selectedTime = this.textContent;
-                    alert("Vous avez sélectionné le " + date + " à " + selectedTime);
-                    hidePopup();
-                });
-                timeOptions.appendChild(timeButton);
-            });
-        }
+        const firstDay = new Date(new Date().getFullYear(), monthIndex, 1);
+        const lastDay = new Date(new Date().getFullYear(), monthIndex + 1, 0);
+        const daysInMonth = lastDay.getDate();
 
-        popup.style.display = "block";
-    }
-
-    // Function to hide the popup
-    function hidePopup() {
-        popup.style.display = "none";
-    }
-
-    // Event listener for closing the popup using the close button
-    closePopupBtn.addEventListener("click", hidePopup);
-
-    // Event listener for closing the popup using the close button inside the popup
-    closePopupButton.addEventListener("click", hidePopup);
-
-    // Get the first day of the month
-    const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-    let startingDay = firstDayOfMonth.getDay();
-
-    if (currentMonth === 4) { // Mai commence un mercredi
-        startingDay = 3; // 3 représente le Mercredi (0 pour Dimanche, 1 pour Lundi, ..., 6 pour Samedi)
-    }
-
-    // Get the number of days in the month
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    // Create the calendar days
-    let dayCount = 1;
-    for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 7; j++) {
-            const dayElement = document.createElement("div");
-            if (i === 0 && j < startingDay) {
-                dayElement.classList.add("day-item", "placeholder");
-            } else if (dayCount > daysInMonth) {
-                dayElement.classList.add("day-item", "placeholder");
-            } else {
-                dayElement.textContent = dayCount;
-                dayElement.classList.add("day-item");
-                dayElement.addEventListener("click", function() {
-                    const clickedDate = new Date(currentYear, currentMonth, dayCount);
-                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    const dateString = clickedDate.toLocaleDateString("fr-FR", options);
-                    showPopup(dateString);
-                });
-                dayCount++;
-            }
-            daysContainer.appendChild(dayElement);
+            const dayDiv = document.createElement('div');
+            dayDiv.classList.add('day');
+            dayDiv.textContent = daysOfWeek[j];
+            daysDiv.appendChild(dayDiv);
         }
+
+        for (let k = 0; k < firstDay.getDay(); k++) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('day');
+            daysDiv.appendChild(emptyDiv);
+        }
+
+        for (let l = 1; l <= daysInMonth; l++) {
+            const dayDiv = document.createElement('div');
+            dayDiv.classList.add('day');
+            dayDiv.textContent = l;
+            const month = monthIndex;
+            dayDiv.addEventListener('click', function (event) {
+                showPopup(event, l, month);
+            });
+            daysDiv.appendChild(dayDiv);
+        }
+
+        monthDiv.appendChild(daysDiv);
+        currentMonthDiv.textContent = months[monthIndex];
     }
 
-    // Mouse hover effect on calendar days
-    const calendarDays = document.querySelectorAll(".day-item");
-    calendarDays.forEach(day => {
-        day.addEventListener("mouseover", function() {
-            this.style.backgroundColor = "lightgray";
-        });
-        day.addEventListener("mouseout", function() {
-            this.style.backgroundColor = "";
-        });
+    updateCalendar(currentMonth);
+
+    prevMonthBtn.addEventListener('click', function () {
+        currentMonth--;
+        if (currentMonth < 0) currentMonth = 11;
+        updateCalendar(currentMonth);
     });
+
+    nextMonthBtn.addEventListener('click', function () {
+        currentMonth++;
+        if (currentMonth > 11) currentMonth = 0;
+        updateCalendar(currentMonth);
+    });
+
+    function showPopup(event, day, month) {
+        const popupTitle = document.createElement('div');
+        popupTitle.classList.add('popup-title');
+        popupTitle.textContent = `${daysOfWeek[new Date(new Date().getFullYear(), month, day).getDay()]} ${day} ${months[month]}`;
+        popup.innerHTML = '';
+        popup.appendChild(popupTitle);
+    
+        const closePopupButton = document.createElement('div');
+        closePopupButton.classList.add('close-popup');
+        closePopupButton.textContent = 'X';
+        popup.appendChild(closePopupButton);
+    
+        const midiSection = document.createElement('div');
+        midiSection.innerHTML = `
+            <h3>MIDI :</h3>
+            <button>12h00</button>
+            <button>12h30</button>
+            <button>13h00</button>
+            <button>13h30</button>
+        `;
+        popup.appendChild(midiSection);
+    
+        const soirSection = document.createElement('div');
+        soirSection.innerHTML = `
+            <h3>SOIR :</h3>
+            <button>19h00</button>
+            <button>19h30</button>
+            <button>20h00</button>
+            <button>20h30</button>
+            <button>21h00</button>
+            <button>21h30</button>
+        `;
+        popup.appendChild(soirSection);
+    
+        closePopupButton.addEventListener('click', function () {
+            popup.style.display = 'none';
+        });
+    
+        const popupWidth = popup.offsetWidth; // Largeur du popup
+        const popupHeight = popup.offsetHeight; // Hauteur du popup
+        const tableRect = calendarDiv.getBoundingClientRect(); // Rectangle du tableau
+    
+        // Position verticale
+        let topPos = tableRect.top + (tableRect.height - popupHeight) / 2;
+        if (topPos < 0) topPos = 0; // Assurer que le popup ne dépasse pas le haut de la fenêtre
+        else if (topPos + popupHeight > window.innerHeight) topPos = window.innerHeight - popupHeight; // Assurer que le popup ne dépasse pas le bas de la fenêtre
+    
+        // Position horizontale
+        let leftPos = tableRect.left - popupWidth - 10;
+        if (leftPos < 0) leftPos = 10; // Assurer que le popup ne dépasse pas le bord gauche de la fenêtre
+    
+        popup.style.top = `${topPos}px`;
+        popup.style.left = `${leftPos}px`;
+        popup.style.display = 'block';
+    }
+    
 });

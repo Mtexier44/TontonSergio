@@ -1,105 +1,67 @@
-.calendar {
-    width: 560px; /* Ajuster la largeur pour accueillir 7 colonnes */
-    margin: 0 auto;
-}
-
-.month-header {
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .calendar {
     text-align: center;
-    margin-bottom: 10px;
-}
-
-.weekdays {
+  }
+  
+  .month-container {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 10px;
-}
-
-.day {
-    width: calc(100% / 7);
-    text-align: center;
-}
-
-.days {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.day-item {
-    width: calc(100% / 7);
-    text-align: center;
-    padding: 5px;
-    border: 1px solid #ccc;
+  }
+  
+  .prev-month,
+  .next-month {
     cursor: pointer;
-}
-
-.day-item.booked {
-    background-color: #f00;
-    color: #fff;
-}
-
-.day-item.selected {
-    background-color: #00f;
-    color: #fff;
-}
-
-.day-item:hover {
-    background-color: lightgray;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0 10px; /* Ajout de marges autour des flèches */
+  }
+  
+  .month-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .month {
     width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 10px;
+  }
+  
+  .day {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s; /* Transition pour une animation fluide */
+  }
+  
+  /* Style pour le survol */
+  .day:hover {
+    background-color: lightgray;
+  }
+  .popup {
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 10px;
-    z-index: 999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.popup-content {
-    position: relative;
-}
-
-.close {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .close-popup {
     position: absolute;
     top: 5px;
     right: 5px;
-    font-size: 20px;
     cursor: pointer;
-}
-
-.popup-content h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.popup-content h3 {
-    margin-top: 15px;
-    font-size: 16px;
-}
-
-#time-options {
-    margin-top: 10px;
-}
-
-.time-option {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.time-option:hover {
-    background-color: #0056b3;
-}
+  }
+  
