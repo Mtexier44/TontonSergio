@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planning des Réservations</title>
+  <link rel="stylesheet" href="planning.css">
+</head>
+<body>
+
+<header>
+  <h1>Planning des Réservations</h1>
+</header>
+
+<main>
+  <form id="reservationForm">
+    <label for="jour">Jour :</label>
+    <select id="jour" name="jour">
+      <option value="Lundi">Lundi</option>
+      <option value="Mardi">Mardi</option>
+      <option value="Mercredi">Mercredi</option>
+      <option value="Jeudi">Jeudi</option>
+      <option value="Vendredi">Vendredi</option>
+      <option value="Samedi">Samedi</option>
+      <option value="Dimanche">Dimanche</option>
+    </select><br>
+
+    <label for="creneau">Créneau :</label>
+    <select id="creneau" name="creneau">
+      <option value="midi">Midi</option>
+      <option value="soir">Soir</option>
+    </select><br>
+
+    <label for="heure">Heure :</label>
+    <input type="time" id="heure" name="heure"><br>
+
+    <label for="nbPersonnes">Nombre de personnes :</label>
+    <input type="number" id="nbPersonnes" name="nbPersonnes" min="1"><br>
+
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom"><br>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom"><br>
+
+    <label for="telephone">Numéro de téléphone :</label>
+    <input type="tel" id="telephone" name="telephone"><br>
+
+    <input type="submit" value="Réserver">
+  </form>
+
+  <div id="planning"></div>
+</main>
+
+<footer>
+  <p>© 2024 Restaurant XYZ</p>
+</footer>
+
+<script src="planning.js"></script>
+</body>
+</html>
