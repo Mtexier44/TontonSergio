@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire de Réservation</title>
-  <link rel="stylesheet" href="reservation.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier de Réservation</title>
+    <link rel="stylesheet" href="reservation.css">
 </head>
 <body>
+    <div class="calendar">
+        <div class="month-header"></div>
+        <div class="weekdays"></div>
+        <div class="days"></div>
+    </div>
 
-<header>
-  <h1>Formulaire de Réservation</h1>
-</header>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="close-popup">&times;</span>
+            <h2 id="popup-date"></h2>
+            <div id="time-options"></div>
+            <button id="close-popup-btn" class="time-option">Fermer</button>
+        </div>
+    </div>
 
-<main>
-  <form id="reservationForm">
-    <!-- Votre formulaire de réservation ici -->
-  </form>
-</main>
-
-<script src="reservation.js"></script>
+    <script src="reservation.js"></script>
 </body>
 </html>

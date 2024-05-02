@@ -1,117 +1,123 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById('reservationForm');
-    const planningDiv = document.getElementById('planning');
-    let reservations = createInitialPlanning();
-  
-    // Création du planning initial
-    function createInitialPlanning() {
-      const jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-      const creneaux = ['midi', 'soir'];
-      const initialPlanning = {};
-  
-      jours.forEach(jour => {
-        initialPlanning[jour] = {
-          midi: [],
-          soir: []
-        };
-      });
-  
-      return initialPlanning;
-    }
-  
-    // Affichage du planning
-    function displayPlanning() {
-      planningDiv.innerHTML = '';
-  
-      const table = document.createElement('table');
-      const thead = table.createTHead();
-      const tbody = table.createTBody();
-  
-      // Création des en-têtes de colonnes
-      const headerRow = thead.insertRow();
-      headerRow.insertCell();
-      const jours = Object.keys(reservations);
-      jours.forEach(jour => {
-        const th = document.createElement('th');
-        th.textContent = jour;
-        headerRow.appendChild(th);
-      });
-  
-      // Remplissage du tableau avec les réservations
-      const creneaux = ['midi', 'soir'];
-      creneaux.forEach(creneau => {
-        const row = tbody.insertRow();
-        const cell = row.insertCell();
-        cell.textContent = creneau.charAt(0).toUpperCase() + creneau.slice(1);
-  
-        jours.forEach(jour => {
-          const reservationsForSlot = reservations[jour][creneau];
-          const reservationsText = reservationsForSlot.map(reservation => {
-            return `${reservation.nbPersonnes} pers`;
-          }).join(', ');
-  
-          const cell = row.insertCell();
-          cell.textContent = reservationsText;
-        });
-      });
-  
-      planningDiv.appendChild(table);
-    }
-    displayPlanning();
-  
-    // Gestion de la soumission du formulaire de réservation
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-  
-      const jour = form.jour.value;
-      const creneau = form.creneau.value;
-      const heure = form.heure.value;
-      const nbPersonnes = parseInt(form.nbPersonnes.value);
-  
-      // Vérifier si l'heure de la réservation est valide
-      if (!isReservationHourValid(creneau, heure)) {
-        alert(`La réservation ne peut pas être effectuée pour ${creneau} le ${jour} à ${heure}.`);
-        return;
-      }
-  
-      // Vérifier si le nombre total de réservations dépasse 45
-      const totalReservationsForSlot = getTotalReservationsForSlot(jour, creneau);
-      const totalReservationsAfterAddition = totalReservationsForSlot + nbPersonnes;
-      if (totalReservationsAfterAddition > 45) {
-        alert(`Il ne reste que ${45 - totalReservationsForSlot} places disponibles pour ${creneau} le ${jour}.`);
-        return;
-      }
-  
-      // Ajout de la réservation au planning
-      reservations[jour][creneau].push({ nbPersonnes });
-  
-      // Réaffichage du planning avec les nouvelles réservations
-      displayPlanning();
-  
-      // Réinitialisation du formulaire
-      form.reset();
+    const monthHeader = document.querySelector(".month-header");
+    const weekdaysContainer = document.querySelector(".weekdays");
+    const daysContainer = document.querySelector(".days");
+    const popup = document.getElementById("popup");
+    const closePopupBtn = document.getElementById("close-popup");
+    const closePopupButton = document.getElementById("close-popup-btn");
+    const popupDate = document.getElementById("popup-date");
+    const timeOptions = document.getElementById("time-options");
+
+    const currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    // Create an array of month names
+    const monthNames = [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ];
+
+    // Set month header
+    monthHeader.textContent = monthNames[currentMonth] + " " + currentYear;
+
+    // Set weekdays
+    const weekdays = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+    weekdays.forEach(function(day) {
+        const weekdayElement = document.createElement("div");
+        weekdayElement.textContent = day;
+        weekdayElement.classList.add("day");
+        weekdaysContainer.appendChild(weekdayElement);
     });
-  
-    // Calcul du nombre total de personnes réservées pour un créneau donné
-    function getTotalReservationsForSlot(jour, creneau) {
-      const reservationsForSlot = reservations[jour][creneau];
-      let totalReservations = 0;
-      reservationsForSlot.forEach(reservation => {
-        totalReservations += parseInt(reservation.nbPersonnes);
-      });
-      return totalReservations;
+
+    // Function to show the popup with available and booked times
+    function showPopup(date) {
+        popupDate.textContent = date;
+
+        // Clear previous time options
+        timeOptions.innerHTML = "";
+
+        // Add time options
+        const timeSlots = {
+            "Midi": ["11h30", "12h", "12h30", "13h", "13h30"],
+            "Soir": ["19h", "19h30", "20h", "20h30", "21h", "21h30"]
+        };
+
+        for (const period in timeSlots) {
+            const periodHeader = document.createElement("h3");
+            periodHeader.textContent = period;
+            timeOptions.appendChild(periodHeader);
+
+            timeSlots[period].forEach(function(time) {
+                const timeButton = document.createElement("button");
+                timeButton.textContent = time;
+                timeButton.classList.add("time-option");
+                timeButton.addEventListener("click", function() {
+                    const selectedTime = this.textContent;
+                    alert("Vous avez sélectionné le " + date + " à " + selectedTime);
+                    hidePopup();
+                });
+                timeOptions.appendChild(timeButton);
+            });
+        }
+
+        popup.style.display = "block";
     }
-  
-    // Vérification si l'heure de réservation est valide
-    function isReservationHourValid(creneau, heure) {
-      heure = heure.split(':').map(num => parseInt(num));
-      if (creneau === 'midi' && (heure[0] < 12 || heure[0] >= 14 || (heure[0] === 14 && heure[1] > 30))) {
-        return false;
-      }
-      if (creneau === 'soir' && (heure[0] < 19 || heure[0] >= 21 || (heure[0] === 21 && heure[1] > 30))) {
-        return false;
-      }
-      return true;
+
+    // Function to hide the popup
+    function hidePopup() {
+        popup.style.display = "none";
     }
-  });
-  
+
+    // Event listener for closing the popup using the close button
+    closePopupBtn.addEventListener("click", hidePopup);
+
+    // Event listener for closing the popup using the close button inside the popup
+    closePopupButton.addEventListener("click", hidePopup);
+
+    // Get the first day of the month
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+    let startingDay = firstDayOfMonth.getDay();
+
+    if (currentMonth === 4) { // Mai commence un mercredi
+        startingDay = 3; // 3 représente le Mercredi (0 pour Dimanche, 1 pour Lundi, ..., 6 pour Samedi)
+    }
+
+    // Get the number of days in the month
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // Create the calendar days
+    let dayCount = 1;
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 7; j++) {
+            const dayElement = document.createElement("div");
+            if (i === 0 && j < startingDay) {
+                dayElement.classList.add("day-item", "placeholder");
+            } else if (dayCount > daysInMonth) {
+                dayElement.classList.add("day-item", "placeholder");
+            } else {
+                dayElement.textContent = dayCount;
+                dayElement.classList.add("day-item");
+                dayElement.addEventListener("click", function() {
+                    const clickedDate = new Date(currentYear, currentMonth, dayCount);
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const dateString = clickedDate.toLocaleDateString("fr-FR", options);
+                    showPopup(dateString);
+                });
+                dayCount++;
+            }
+            daysContainer.appendChild(dayElement);
+        }
+    }
+
+    // Mouse hover effect on calendar days
+    const calendarDays = document.querySelectorAll(".day-item");
+    calendarDays.forEach(day => {
+        day.addEventListener("mouseover", function() {
+            this.style.backgroundColor = "lightgray";
+        });
+        day.addEventListener("mouseout", function() {
+            this.style.backgroundColor = "";
+        });
+    });
+});

@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffaee;
+}
+
+.container {
+    width: 300px;
+    margin: 100px auto;
+    background-color: #fffaee;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.tabs {
+    text-align: center;
+}
+
+.tablinks {
+    background-color: #fffaee;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tablinks.active {
+    background-color: #ee871e;
+    color: #fffaee;
+}
+
+.tablinks:hover {
+    background-color: #fffaee;
+}
+
+.tabcontent {
+    display: none;
+}
+
+form {
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #ee871e;
+    color: #fffaee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ee871e;
+}
