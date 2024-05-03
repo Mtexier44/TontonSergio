@@ -15,6 +15,7 @@ body {
 .title {
     font-size: 20px; /* Taille du texte du titre */
     margin: 0 auto; /* Déplacer le titre au milieu */
+    text-align: center;
 }
 
 .menu-icon {
@@ -91,4 +92,10 @@ body {
     top: 5px;
     right: 5px;
     cursor: pointer;
+}
+.menu-button {
+    width: 135px; /* Largeur de l'image */
+    height: 135px; /* Hauteur de l'image */
+    margin: 5px; /* Marge autour de l'image */
+    cursor: pointer; /* Curseur pointeur */
 }

@@ -11,10 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevMonthBtn = document.querySelector('.prev-month');
     const nextMonthBtn = document.querySelector('.next-month');
     const currentMonthDiv = document.querySelector('.current-month');
-
-    const popup = document.createElement('div');
-    popup.classList.add('popup');
-    document.body.appendChild(popup);
+    const popup = document.querySelector('.popup');
 
     let currentMonth = new Date().getMonth();
 
@@ -85,27 +82,45 @@ document.addEventListener('DOMContentLoaded', function () {
         const midiSection = document.createElement('div');
         midiSection.innerHTML = `
             <h3>MIDI :</h3>
-            <button>12h00</button>
-            <button>12h30</button>
-            <button>13h00</button>
-            <button>13h30</button>
+            <button class="midi-button" data-time="12h00">12h00</button>
+            <button class="midi-button" data-time="12h30">12h30</button>
+            <button class="midi-button" data-time="13h00">13h00</button>
+            <button class="midi-button" data-time="13h30">13h30</button>
         `;
         popup.appendChild(midiSection);
     
         const soirSection = document.createElement('div');
         soirSection.innerHTML = `
             <h3>SOIR :</h3>
-            <button>19h00</button>
-            <button>19h30</button>
-            <button>20h00</button>
-            <button>20h30</button>
-            <button>21h00</button>
-            <button>21h30</button>
+            <button class="soir-button" data-time="19h00">19h00</button>
+            <button class="soir-button" data-time="19h30">19h30</button>
+            <button class="soir-button" data-time="20h00">20h00</button>
+            <button class="soir-button" data-time="20h30">20h30</button>
+            <button class="soir-button" data-time="21h00">21h00</button>
+            <button class="soir-button" data-time="21h30">21h30</button>
         `;
         popup.appendChild(soirSection);
     
         closePopupButton.addEventListener('click', function () {
             popup.style.display = 'none';
+        });
+
+        // Ajout d'un gestionnaire de clic pour chaque bouton MIDI
+        const midiButtons = popup.querySelectorAll('.midi-button');
+        midiButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const time = button.getAttribute('data-time');
+                window.open(`nouvelle_page.html?time=${time}`, '_blank');
+            });
+        });
+
+        // Ajout d'un gestionnaire de clic pour chaque bouton SOIR
+        const soirButtons = popup.querySelectorAll('.soir-button');
+        soirButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const time = button.getAttribute('data-time');
+                window.open(`nouvelle_page.html?time=${time}`, '_blank');
+            });
         });
     
         const popupWidth = popup.offsetWidth; // Largeur du popup
@@ -125,19 +140,4 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.left = `${leftPos}px`;
         popup.style.display = 'block';
     }
-    document.addEventListener('DOMContentLoaded', function () {
-    const menuIcon = document.querySelector('.menu-icon');
-    const menuContent = document.querySelector('.menu-content');
-    const menuOverlay = document.querySelector('.menu-overlay');
-
-    menuIcon.addEventListener('click', function () {
-        menuContent.classList.toggle('menu-open');
-        menuOverlay.style.display = 'block';
-    });
-
-    menuOverlay.addEventListener('click', function () {
-        menuContent.classList.remove('menu-open');
-        menuOverlay.style.display = 'none';
-    });
-});
 });
