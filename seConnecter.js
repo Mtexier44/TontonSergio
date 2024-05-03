@@ -7,7 +7,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        console.log('Adresse Email:', email);
-        console.log('Mot de Passe:', password);
+        // Récupérer les données utilisateur du stockage local
+        var storedUserData = localStorage.getItem('userData');
+        if (storedUserData) {
+            var userData = JSON.parse(storedUserData);
+
+            // Vérifier les informations de connexion
+            if (email === userData.email && password === userData.password) {
+                // Informations de connexion correctes, stockez le rôle de l'utilisateur dans une variable locale
+                var userRole = userData.role;
+            
+                // Rediriger vers la page d'accueil
+                window.location.href = "home.html";
+            } else {
+                alert("Adresse Email ou Mot de Passe incorrect");
+            }
+        } else {
+            alert("Aucun compte enregistré. Veuillez créer un compte d'abord.");
+        }
     });
 });
