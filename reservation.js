@@ -125,5 +125,19 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.left = `${leftPos}px`;
         popup.style.display = 'block';
     }
-    
+    document.addEventListener('DOMContentLoaded', function () {
+    const menuIcon = document.querySelector('.menu-icon');
+    const menuContent = document.querySelector('.menu-content');
+    const menuOverlay = document.querySelector('.menu-overlay');
+
+    menuIcon.addEventListener('click', function () {
+        menuContent.classList.toggle('menu-open');
+        menuOverlay.style.display = 'block';
+    });
+
+    menuOverlay.addEventListener('click', function () {
+        menuContent.classList.remove('menu-open');
+        menuOverlay.style.display = 'none';
+    });
+});
 });

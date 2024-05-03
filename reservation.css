@@ -1,54 +1,82 @@
 body {
     font-family: Arial, sans-serif;
-  }
+    margin: 0; /* Supprime les marges par défaut du body */
+    padding: 0; /* Supprime le padding par défaut du body */
+}
+
+.navbar {
+    background-color: #333; /* Couleur de fond du bandeau */
+    color: white; /* Couleur du texte */
+    padding: 10px; /* Espacement intérieur */
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+}
+
+.title {
+    font-size: 20px; /* Taille du texte du titre */
+    margin: 0 auto; /* Déplacer le titre au milieu */
+}
+
+.menu-icon {
+    cursor: pointer; /* Afficher le curseur comme un pointeur */
+    margin-right: 10px; /* Espacement entre le menu et le titre */
+}
+
+.menu-line {
+    width: 20px; /* Largeur de chaque ligne du menu */
+    height: 2px; /* Hauteur de chaque ligne du menu */
+    background-color: white; /* Couleur des lignes */
+    margin: 3px 0; /* Espacement entre les lignes */
+}
   
-  .calendar {
+.calendar {
     text-align: center;
-  }
+}
   
-  .month-container {
+.month-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
-  }
+}
   
-  .prev-month,
-  .next-month {
+.prev-month,
+.next-month {
     cursor: pointer;
     margin: 0 10px; /* Ajout de marges autour des flèches */
-  }
+}
   
-  .month-name {
+.month-name {
     font-size: 20px;
     font-weight: bold;
-  }
+}
   
-  .month {
+.month {
     width: 300px;
     margin: 0 auto;
     border: 1px solid #ccc;
     padding: 10px;
-  }
+}
   
-  .days {
+.days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     margin-top: 10px;
-  }
+}
   
-  .day {
+.day {
     padding: 5px;
     text-align: center;
     border: 1px solid #ccc;
     transition: background-color 0.3s; /* Transition pour une animation fluide */
-  }
+}
   
-  /* Style pour le survol */
-  .day:hover {
+/* Style pour le survol */
+.day:hover {
     background-color: lightgray;
-  }
-  .popup {
+}
+
+.popup {
     position: fixed;
     background-color: white;
     border: 1px solid #ccc;
@@ -56,12 +84,11 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-  }
-  
-  .close-popup {
+}
+
+.close-popup {
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
-  }
-  
+}
