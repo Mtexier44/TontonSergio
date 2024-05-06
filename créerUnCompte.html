@@ -13,8 +13,8 @@
     <div class="form-group">
       <label for="accountType">Type de Compte:</label>
       <select id="accountType" name="accountType">
-        <option value="entreprise">Clients</option>
-        <option value="entreprise">Employés</option>
+        <option value="client">Clients</option>
+        <option value="employé">Employés</option>
       </select>
     </div>
     <div class="form-group">
@@ -40,6 +40,10 @@
     <div class="form-group">
       <label for="confirmPassword">Confirmer le Mot de Passe:</label>
       <input type="password" id="confirmPassword" name="confirmPassword" required>
+      <div id="confirmationCodeGroup" class="form-group hidden">
+        <label for="confirmationCode">Code de Confirmation:</label>
+        <input type="text" id="confirmationCode" name="confirmationCode" required>
+    </div>
     </div>
     <button type="submit">S'enregistrer</button>
   </form>
@@ -47,4 +51,3 @@
 <script src="créerUnCompte.js"></script>
 </body>
 </html>
-

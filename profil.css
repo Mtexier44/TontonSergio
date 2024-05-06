@@ -1,0 +1,125 @@
+/* profil.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #fffaee;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    color: #d81d09;
+}
+
+.left-elements, .right-elements {
+    display: flex;
+    align-items: center;
+}
+
+.right-elements img{
+    width: 100px;
+}
+
+.left-elements img {
+    width: 200px;
+}
+
+.left-elements h1 {
+    margin-left: 350px;
+    color: #d81d09; 
+}
+
+.button {
+    margin: 10px;
+    background-color: #ee871e;
+    color: #fffaee;
+    padding: 10px 0px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    width: 150px; 
+}
+
+.button:hover {
+    background-color: #d81d09;
+}
+
+main {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 20px;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-details {
+    font-size: 16px;
+}
+
+.edit-profile {
+    text-align: center;
+}
+
+.edit-profile a {
+    background-color: #d81d09; /* Modification de la couleur du bouton */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.edit-profile a:hover {
+    background-color: #ee871e; /* Modification de la couleur au survol */
+}
+
+footer {
+    background-color: #fffaee;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.map {
+    /* Styles pour la carte interactive */
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 10px; 
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}

@@ -16,9 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (email === userData.email && password === userData.password) {
                 // Informations de connexion correctes, stockez le rôle de l'utilisateur dans une variable locale
                 var userRole = userData.role;
-            
-                // Rediriger vers la page d'accueil
-                window.location.href = "home.html";
+                
+                // Rediriger en fonction du rôle de l'utilisateur
+                if (userRole === 'employé') {
+                    window.location.href = "homeConnecté.html"; // Rediriger vers l'accueil des employés
+                } else {
+                    window.location.href = "home.html"; // Rediriger vers l'accueil standard
+                }
             } else {
                 alert("Adresse Email ou Mot de Passe incorrect");
             }
