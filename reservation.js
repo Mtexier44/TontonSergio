@@ -68,17 +68,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function showPopup(event, day, month) {
+        const selectedDate = new Date(new Date().getFullYear(), month, day);
+        const selectedDateString = `${daysOfWeek[selectedDate.getDay()]} ${day} ${months[month]}`;
+
         const popupTitle = document.createElement('div');
         popupTitle.classList.add('popup-title');
-        popupTitle.textContent = `${daysOfWeek[new Date(new Date().getFullYear(), month, day).getDay()]} ${day} ${months[month]}`;
+        popupTitle.textContent = `${selectedDateString}`;
         popup.innerHTML = '';
         popup.appendChild(popupTitle);
-    
+
         const closePopupButton = document.createElement('div');
         closePopupButton.classList.add('close-popup');
         closePopupButton.textContent = 'X';
         popup.appendChild(closePopupButton);
-    
+
         const midiSection = document.createElement('div');
         midiSection.innerHTML = `
             <h3>MIDI :</h3>
@@ -88,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="midi-button" data-time="13h30">13h30</button>
         `;
         popup.appendChild(midiSection);
-    
+
         const soirSection = document.createElement('div');
         soirSection.innerHTML = `
             <h3>SOIR :</h3>
@@ -100,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="soir-button" data-time="21h30">21h30</button>
         `;
         popup.appendChild(soirSection);
-    
+
         closePopupButton.addEventListener('click', function () {
             popup.style.display = 'none';
         });
@@ -110,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
         midiButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const time = button.getAttribute('data-time');
-                window.open(`nouvelle_page.html?time=${time}`, '_blank');
+                window.open(`reservation2.html?date=${selectedDateString}&time=${time}`, '_blank');
             });
         });
 
@@ -119,23 +122,23 @@ document.addEventListener('DOMContentLoaded', function () {
         soirButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const time = button.getAttribute('data-time');
-                window.open(`nouvelle_page.html?time=${time}`, '_blank');
+                window.open(`reservation2.html?date=${selectedDateString}&time=${time}`, '_blank');
             });
         });
-    
+
         const popupWidth = popup.offsetWidth; // Largeur du popup
         const popupHeight = popup.offsetHeight; // Hauteur du popup
         const tableRect = calendarDiv.getBoundingClientRect(); // Rectangle du tableau
-    
+
         // Position verticale
         let topPos = tableRect.top + (tableRect.height - popupHeight) / 2;
         if (topPos < 0) topPos = 0; // Assurer que le popup ne dépasse pas le haut de la fenêtre
         else if (topPos + popupHeight > window.innerHeight) topPos = window.innerHeight - popupHeight; // Assurer que le popup ne dépasse pas le bas de la fenêtre
-    
+
         // Position horizontale
         let leftPos = tableRect.left - popupWidth - 10;
         if (leftPos < 0) leftPos = 10; // Assurer que le popup ne dépasse pas le bord gauche de la fenêtre
-    
+
         popup.style.top = `${topPos}px`;
         popup.style.left = `${leftPos}px`;
         popup.style.display = 'block';

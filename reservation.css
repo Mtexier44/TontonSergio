@@ -4,19 +4,34 @@ body {
     padding: 0; /* Supprime le padding par défaut du body */
 }
 
-.navbar {
-    background-color: #333; /* Couleur de fond du bandeau */
-    color: white; /* Couleur du texte */
-    padding: 10px; /* Espacement intérieur */
-    display: flex; /* Utiliser flexbox pour aligner les éléments */
-    align-items: center; /* Aligner les éléments verticalement */
-}
-
-.title {
-    font-size: 20px; /* Taille du texte du titre */
-    margin: 0 auto; /* Déplacer le titre au milieu */
-    text-align: center;
-}
+.header {
+    background-color: #fffaee;
+    color: #ee871e;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 135px;
+    height: 135px; /* Ajout de la hauteur pour maintenir le logo rond */
+    margin-right: 20px;
+    overflow: hidden; /* Pour cacher les parties dépassantes de l'image */
+    border-radius: 50%; /* Pour rendre le logo rond */
+  }
+  
+  .logo img {
+    width: 100%;
+    height: 100%; /* Ajustement de la hauteur pour s'adapter au conteneur */
+    object-fit: cover; /* Pour s'assurer que l'image couvre entièrement le conteneur */
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1; /* Pour que le titre prenne autant d'espace que possible */
+    text-align: center; /* Pour centrer le titre */
+  }
 
 .menu-icon {
     cursor: pointer; /* Afficher le curseur comme un pointeur */
@@ -74,13 +89,13 @@ body {
   
 /* Style pour le survol */
 .day:hover {
-    background-color: lightgray;
+    background-color: #ee871e;
 }
 
 .popup {
     position: fixed;
     background-color: white;
-    border: 1px solid #ccc;
+    border: 1px solid #ee871e;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -99,3 +114,10 @@ body {
     margin: 5px; /* Marge autour de l'image */
     cursor: pointer; /* Curseur pointeur */
 }
+
+footer {
+    background-color: #fffaee;
+    color: #ee871e;
+    text-align: center;
+    padding: 10px 0;
+  }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre réservation</title>
+    <link rel="stylesheet" href="reservation2.css">
+</head>
+<body>
+    <!-- Tête de page -->
+    <div class="header">
+        <div class="logo">
+            <a href="reservation.html"><img src="Logo.png" alt="Logo"></a>
+        </div>
+        <h1 class="title">Votre réservation</h1>
+
+
+    <!-- Corps de page -->
+    <div class="reservation-details">
+        <h2 id="reservation-title"></h2>
+
+        <h3>Connexion ou création d'un compte :</h3>
+        <p>Si vous avez déjà un compte, veuillez vous connecter. Sinon, veuillez créer un compte.</p>
+
+        <h3>Nom de réservation :</h3>
+        <input type="text" id="name" placeholder="Entrez votre nom">
+
+        <h3>Nombre de réservation :</h3>
+        <input type="number" id="reservation-number" value="1">
+
+        <button id="validate-btn">Valider la réservation</button>
+    </div>
+
+    <!-- Popup de résumé -->
+    <div class="popup" id="summary-popup">
+        <div class="summary">
+            <h2>Récapitulatif de la réservation :</h2>
+            <p>Date et heure : <span id="summary-date"></span></p>
+            <p>Nom : <span id="summary-name"></span></p>
+            <p>Nombre de réservation : <span id="summary-number"></span></p>
+        </div>
+        <button id="close-popup">Fermer</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const date = urlParams.get('date');
+        const time = urlParams.get('time');
+
+        document.getElementById('reservation-title').textContent = `Réservation du ${date} à ${time}`;
+
+        // Validation de la réservation
+        document.getElementById('validate-btn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const reservationNumber = document.getElementById('reservation-number').value;
+
+            // Afficher le résumé dans le popup
+            document.getElementById('summary-date').textContent = `${date} à ${time}`;
+            document.getElementById('summary-name').textContent = name;
+            document.getElementById('summary-number').textContent = reservationNumber;
+
+            // Afficher le popup
+            document.getElementById('summary-popup').style.display = 'block';
+        });
+
+        // Fermer le popup
+        document.getElementById('close-popup').addEventListener('click', function() {
+            document.getElementById('summary-popup').style.display = 'none';
+        });
+    </script>
+
+</body>
+
+
+</html>

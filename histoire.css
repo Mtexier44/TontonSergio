@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0; /* Supprime les marges par défaut du body */
+  padding: 0; /* Supprime le padding par défaut du body */
 }
 
 .header {
@@ -33,24 +33,7 @@ body {
   text-align: center; /* Pour centrer le titre */
 }
 
-main {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 20px;
-}
 
-.membre {
-  text-align: center;
-  width: 30%;
-  margin-bottom: 20px;
-}
-
-.membre img {
-  width: 100%;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
 
 footer {
   background-color: #fffaee;
