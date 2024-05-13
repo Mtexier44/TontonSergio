@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des réservations</title>
+    <link rel="stylesheet" href="bddreservation.css">
+</head>
+<body>
+    <!-- Tête de page -->
+    <div class="header">
+        <div class="logo">
+            <a href="home.html"><img src="Logo.png" alt="Logo"></a>
+        </div>
+        <h1 class="title">Liste des réservations</h1>
+    </div>
+
+    <!-- Outil de recherche -->
+    <div class="search-container">
+        <input type="text" id="search-name" placeholder="Rechercher par nom...">
+        <input type="date" id="search-date">
+        <select id="search-day">
+            <option value="">Sélectionner un jour de la semaine</option>
+            <option value="Monday">Lundi</option>
+            <option value="Tuesday">Mardi</option>
+            <option value="Wednesday">Mercredi</option>
+            <option value="Thursday">Jeudi</option>
+            <option value="Friday">Vendredi</option>
+            <option value="Saturday">Samedi</option>
+            <option value="Sunday">Dimanche</option>
+        </select>
+        <button id="search-btn">Rechercher</button>
+    </div>
+
+    <!-- Tableau des réservations -->
+    <div class="reservation-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Nom de réservation</th>
+                    <th>Nombre de personnes</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                </tr>
+            </thead>
+            <tbody id="reservation-body">
+                <!-- Les réservations seront ajoutées ici -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="reservation2.js"></script>
+    <script src="bddreservation.js"></script>
+
+    <footer>
+
+        <p>© 2024 Chez Tonton Sergio</p>
+        
+    </footer>
+        
+</body>
+</html>
