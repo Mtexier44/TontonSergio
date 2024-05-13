@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('userPassword').textContent = '*********'; // Vous ne devriez pas afficher le mot de passe réel dans le profil
         
         // Charger l'avatar de l'utilisateur
-        document.getElementById('avatarPreview').src = userData.avatar; // Utiliser le chemin de l'avatar enregistré
+        document.getElementById('avatarPreview').src = userData.avatar; // Mettre à jour l'avatar avec celui sélectionné
     } else {
         // Gérer le cas où aucune donnée utilisateur n'est disponible
         console.log("Aucune donnée utilisateur disponible.");
