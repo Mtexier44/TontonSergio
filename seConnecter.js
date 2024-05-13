@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var userRole = userData.role;
                 
                 // Rediriger en fonction du rôle de l'utilisateur
-                if (userRole === 'employé') {
+                if (userRole === 'employés') {
                     window.location.href = "homeConnecté.html"; // Rediriger vers l'accueil des employés
                 } else {
                     window.location.href = "home.html"; // Rediriger vers l'accueil standard

@@ -1,7 +1,6 @@
-/* profil.css */
-
 body {
     font-family: Arial, sans-serif;
+    align-items: center;
 }
 
 header {
@@ -82,44 +81,28 @@ main {
 }
 
 .edit-profile a {
-    background-color: #d81d09; /* Modification de la couleur du bouton */
+    display: inline-block;
+    background-color: #d81d09;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 .edit-profile a:hover {
-    background-color: #ee871e; /* Modification de la couleur au survol */
+    background-color: #ee871e;
 }
 
-footer {
-    background-color: #fffaee;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; 
+
+.edit-profile a:hover {
+    background-color: #ee871e;
 }
 
-.social-media {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-}
 
-.map {
-    /* Styles pour la carte interactive */
-}
-
-.social-media {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    margin-top: 10px; 
-}
-
-.social-media img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 5px;
+.user-info-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -100px;
 }
