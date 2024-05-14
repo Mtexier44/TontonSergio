@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Votre réservation</title>
+    <link rel="stylesheet" href="reservation2.css">
+</head>
+<body>
+    <!-- Tête de page -->
+    <div class="header">
+        <div class="logo">
+            <a href="reservation.html"><img src="Logo.png" alt="Logo"></a>
+        </div>
+        <h1 class="title">Votre réservation</h1>
+    </div>
+
+    <!-- Corps de page -->
+    <div class="reservation-details">
+        <h2 id="reservation-title"></h2>
+
+        <h3>Connexion :</h3>
+        <p>Nom d'utilisateur :</p>
+        <input type="text" id="username" placeholder="Entrez votre nom d'utilisateur">
+        <p>Mot de passe :</p>
+        <input type="password" id="password" placeholder="Entrez votre mot de passe">
+
+        <h3>Détails de la réservation :</h3>
+        <p>Nom de réservation :</p>
+        <input type="text" id="name" placeholder="Entrez votre nom">
+        <p>Nombre de personnes :</p>
+        <input type="number" id="number-of-people" min="1" value="1">
+
+        <button id="login-btn">Connexion</button>
+    </div>
+
+    <!-- Popup de résumé -->
+    <div class="popup" id="summary-popup">
+        <div class="summary">
+            <h2>Récapitulatif de la réservation :</h2>
+            <p>Date et heure : <span id="summary-date"></span></p>
+            <p>Nom : <span id="summary-name"></span></p>
+            <p>Nombre de personnes : <span id="summary-people"></span></p>
+        </div>
+        <button id="close-popup">Fermer</button>
+    </div>
+
+    <script src="reservation2.js"></script>
+
+    <footer>
+
+        <p>© 2024 Chez Tonton Sergio</p>
+        
+    </footer>
+
+</body>
+</html>

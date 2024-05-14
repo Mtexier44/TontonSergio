@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Supprime les marges par défaut du body */
+    padding: 0; /* Supprime le padding par défaut du body */
+}
+
+.header {
+    background-color: #fffaee;
+    color: #ee871e;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 135px;
+    height: 135px; /* Ajout de la hauteur pour maintenir le logo rond */
+    margin-right: 20px;
+    overflow: hidden; /* Pour cacher les parties dépassantes de l'image */
+    border-radius: 50%; /* Pour rendre le logo rond */
+  }
+  
+  .logo img {
+    width: 100%;
+    height: 100%; /* Ajustement de la hauteur pour s'adapter au conteneur */
+    object-fit: cover; /* Pour s'assurer que l'image couvre entièrement le conteneur */
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1; /* Pour que le titre prenne autant d'espace que possible */
+    text-align: center; /* Pour centrer le titre */
+  }
+
+.menu-icon {
+    cursor: pointer; /* Afficher le curseur comme un pointeur */
+    margin-right: 10px; /* Espacement entre le menu et le titre */
+}
+
+.menu-line {
+    width: 20px; /* Largeur de chaque ligne du menu */
+    height: 2px; /* Hauteur de chaque ligne du menu */
+    background-color: white; /* Couleur des lignes */
+    margin: 3px 0; /* Espacement entre les lignes */
+}
+  
+.calendar {
+    text-align: center;
+}
+  
+.month-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+  
+.prev-month,
+.next-month {
+    cursor: pointer;
+    margin: 0 10px; /* Ajout de marges autour des flèches */
+}
+  
+.month-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.month {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+  
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 10px;
+}
+  
+.day {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s; /* Transition pour une animation fluide */
+}
+  
+/* Style pour le survol */
+.day:hover {
+    background-color: #ee871e;
+}
+
+.popup {
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ee871e;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.close-popup {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.menu-button {
+    width: 135px; /* Largeur de l'image */
+    height: 135px; /* Hauteur de l'image */
+    margin: 5px; /* Marge autour de l'image */
+    cursor: pointer; /* Curseur pointeur */
+}
+
+footer {
+    background-color: #fffaee;
+    color: #ee871e;
+    text-align: center;
+    padding: 10px 0;
+  }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Profil</title>
+    <link rel="stylesheet" href="modifierProfil.css">
+</head>
+<body>
+    <header>
+        <h1>Modifier le profil</h1>
+    </header>
+    <main>
+        <div class="user-info-container">
+            <div class="profile-info">
+                <div class="avatar">
+                    <img id="avatarPreview" src="Avatar 17.jpg" alt="Avatar de l'utilisateur">
+                </div>
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label for="firstName">Nom d'utilisateur</label>
+                        <input type="text" id="firstName" name="firstName" value="Utilisateur" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="utilisateur@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numéro de téléphone</label>
+                        <input type="tel" id="phone" name="phone" value="+33612345678" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Choisir un avatar:</label>
+                        <select id="avatar" name="avatar">
+                            <option value="Avatar 1.png">Avatar 1</option>
+                            <option value="Avatar 2.png">Avatar 2</option>
+                            <option value="Avatar 3.png">Avatar 3</option>
+                            <option value="Avatar 4.png">Avatar 4</option>
+                            <option value="Avatar 5.png">Avatar 5</option>
+                            <option value="Avatar 6.png">Avatar 6</option>
+                            <option value="Avatar 7.png">Avatar 7</option>
+                            <option value="Avatar 8.png">Avatar 8</option>
+                            <option value="Avatar 9.png">Avatar 9</option>
+                            <option value="Avatar 10.png">Avatar 10</option>
+                            <option value="Avatar 11.png">Avatar 11</option>
+                            <option value="Avatar 12.png">Avatar 12</option>
+                            <option value="Avatar 13.png">Avatar 13</option>
+                            <option value="Avatar 14.png">Avatar 14</option>
+                            <option value="Avatar 15.png">Avatar 15</option>
+                            <option value="Avatar 16.png">Avatar 16</option>
+                            <option value="Avatar 17.jpg">Avatar 17</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Nouveau Mot de Passe:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le Nouveau Mot de Passe:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit">Enregistrer</button>
+                </form>
+            </div>
+            <div class="edit-profile">
+                <a href="profil.html">Annuler</a>
+            </div>
+        </div>
+    </main>
+    <script src="modifierProfil.js"></script>
+</body>
+</html>
