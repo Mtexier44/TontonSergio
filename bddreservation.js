@@ -42,3 +42,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Afficher toutes les réservations au chargement de la page
     afficherReservations(reservations);
 });
+
